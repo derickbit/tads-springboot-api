@@ -9,7 +9,7 @@ import java.net.URI;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/v1/users") // Alinhado ao padrão do professor
+@RequestMapping("api/v1/users")
 public class UserController {
 
     private final UserRepository repository;
@@ -25,7 +25,7 @@ public class UserController {
         return ResponseEntity.ok(repository.findAll().stream().map(UserDtoResponse::new).toList());
     }
 
-    // GET por ID (retorna a Entidade, como no exemplo do professor)
+    // GET por ID (retorna a Entidade)
     @GetMapping("{id}")
     public ResponseEntity<User> findById(@PathVariable Long id){
         var optionalUser = repository.findById(id);
@@ -41,7 +41,7 @@ public class UserController {
         // Usa o construtor que criamos na entidade User
         var user = repository.save(new User(userDtoPost));
 
-        // Constrói a URI de resposta, como o professor fez
+        // Constrói a URI de resposta
         var location = uriBuilder.path("api/v1/users/{id}").buildAndExpand(user.getId()).toUri();
         return ResponseEntity.created(location).build();
     }
@@ -49,7 +49,7 @@ public class UserController {
     // PUT (Recebe DTO Put, retorna DTO Resposta)
     @PutMapping("{id}")
     public ResponseEntity<UserDtoResponse> update(@PathVariable("id") Long id, @Valid @RequestBody UserDtoPut userDtoPut){
-        // Busca o usuário existente primeiro (Melhoria em relação ao exemplo)
+        // Busca o usuário existente primeiro
         var optionalUser = repository.findById(id);
         if(optionalUser.isPresent()){
             var user = optionalUser.get();
@@ -67,7 +67,7 @@ public class UserController {
         return ResponseEntity.notFound().build();
     }
 
-    // DELETE (Lógica idêntica à do professor)
+    // DELETE
     @DeleteMapping("{id}")
     public ResponseEntity<Void> delete(@PathVariable("id") Long id){
         if(repository.existsById(id)){
