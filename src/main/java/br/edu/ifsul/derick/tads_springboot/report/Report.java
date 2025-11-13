@@ -1,5 +1,7 @@
-package br.edu.ifsul.derick.tads_springboot.model;
+package br.edu.ifsul.derick.tads_springboot.report;
 
+import br.edu.ifsul.derick.tads_springboot.message.Message;
+import br.edu.ifsul.derick.tads_springboot.user.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;

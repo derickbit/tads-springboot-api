@@ -1,6 +1,6 @@
-package br.edu.ifsul.derick.tads_springboot.repository;
+package br.edu.ifsul.derick.tads_springboot.report;
 
-import br.edu.ifsul.derick.tads_springboot.model.Report;
+import br.edu.ifsul.derick.tads_springboot.report.Report;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

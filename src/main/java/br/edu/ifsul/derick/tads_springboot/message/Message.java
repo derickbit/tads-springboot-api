@@ -1,5 +1,7 @@
-package br.edu.ifsul.derick.tads_springboot.model;
+package br.edu.ifsul.derick.tads_springboot.message;
 
+import br.edu.ifsul.derick.tads_springboot.report.Report;
+import br.edu.ifsul.derick.tads_springboot.user.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,15 +13,12 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "patch_notes")
-public class PatchNote {
+@Table(name = "messages")
+public class Message {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Column(nullable = false)
-    private String title;
 
     @Lob
     private String body;
@@ -27,13 +26,14 @@ public class PatchNote {
     @Column(name = "image_url")
     private String image_url;
 
-    @Column(name = "published_at")
-    private LocalDateTime published_at;
-
-    @Column
-    private String status;
+    @Column(name = "sent_at")
+    private LocalDateTime sent_at;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "author_id", nullable = false)
     private User author;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "report_id", nullable = false)
+    private Report report;
 }

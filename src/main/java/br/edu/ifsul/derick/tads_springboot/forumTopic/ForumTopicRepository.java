@@ -1,6 +1,6 @@
-package br.edu.ifsul.derick.tads_springboot.repository;
+package br.edu.ifsul.derick.tads_springboot.forumTopic;
 
-import br.edu.ifsul.derick.tads_springboot.model.ForumTopic;
+import br.edu.ifsul.derick.tads_springboot.forumTopic.ForumTopic;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

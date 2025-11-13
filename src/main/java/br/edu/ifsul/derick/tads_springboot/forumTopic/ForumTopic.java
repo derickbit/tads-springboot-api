@@ -1,5 +1,6 @@
-package br.edu.ifsul.derick.tads_springboot.model;
+package br.edu.ifsul.derick.tads_springboot.forumTopic;
 
+import br.edu.ifsul.derick.tads_springboot.user.User;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

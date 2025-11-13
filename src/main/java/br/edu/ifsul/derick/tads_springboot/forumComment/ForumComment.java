@@ -1,5 +1,7 @@
-package br.edu.ifsul.derick.tads_springboot.model;
+package br.edu.ifsul.derick.tads_springboot.forumComment;
 
+import br.edu.ifsul.derick.tads_springboot.forumTopic.ForumTopic;
+import br.edu.ifsul.derick.tads_springboot.user.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -33,5 +35,5 @@ public class ForumComment {
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "forum_topic_id", nullable = false)
-    private br.edu.ifsul.derick.tads_springboot.model.ForumTopic forumTopic;
+    private ForumTopic forumTopic;
 }
