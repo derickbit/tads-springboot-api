@@ -15,7 +15,7 @@ public record UserDtoPost(
 
         @NotBlank(message = "A senha não pode ser nula ou vazia")
         @Size(min = 6, message = "A senha deve ter no mínimo 6 caracteres")
-        String password_hash,
+        String senha,
 
         @NotBlank(message = "A role não pode ser nula ou vazia")
         String role

@@ -1,0 +1,79 @@
+### =======================================
+### TAREFA 4 - ROTEIRO DE TESTE JWT
+### =======================================
+
+###
+### PASSO 1: Fazer Login como Admin
+#
+# Rode este teste (clique no ▶️ verde).
+# Ele deve retornar um Status 200 OK.
+#
+# Na resposta (no painel "Run"), você verá um JSON: {"token": "ey..."}
+#
+# !! IMPORTANTE: Copie APENAS a string longa que começa com "ey...",
+#    SEM as aspas e SEM as chaves {}.
+###
+# @name loginAdmin
+POST http://localhost:8080/api/v1/login
+Content-Type: application/json
+
+{
+  "email": "admin@email.com",
+  "senha": "admin"
+}
+
+
+### =======================================
+### PASSO 2: Testar Acesso a Rota Protegida (GET)
+#
+# 1. Copie o token do PASSO 1.
+# 2. Cole o token DEPOIS da palavra "Bearer " na linha "Authorization:".
+# 3. Rode este teste.
+#
+# ESPERADO: Status 200 OK e a lista com seu usuário Admin.
+###
+# @name getUsersComToken
+GET http://localhost:8080/api/v1/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJBUEkgQ2FyZE5lc3QiLCJzdWIiOiJhZG1pbkBlbWFpbC5jb20iLCJpYXQiOjE3NjMzNDE1NzEsImV4cCI6MTc2MzM0ODc3MX0.-_0YTxVK-vVKIYM6OSMS5sMo8liILarOQxaWsTRMVMo
+
+
+### =======================================
+### PASSO 3: Testar Rota de ADMIN (POST)
+#
+# 1. Use o MESMO token de Admin que você colou no PASSO 2.
+# 2. Rode este teste.
+#
+# ESPERADO: Status 201 CREATED.
+
+###
+# @name createUserComToken
+POST http://localhost:8080/api/v1/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJBUEkgQ2FyZE5lc3QiLCJzdWIiOiJhZG1pbkBlbWFpbC5jb20iLCJpYXQiOjE3NjMzNDE1NzEsImV4cCI6MTc2MzM0ODc3MX0.-_0YTxVK-vVKIYM6OSMS5sMo8liILarOQxaWsTRMVMo
+Content-Type: application/json
+
+{
+  "name": "Novo Usuario (Criado pelo Admin)",
+  "email": "novo.user@email.com",
+  "senha": "123456",
+  "role": "ROLE_USER"
+}
+
+
+### =======================================
+### PASSO 4: Teste de Segurança (Falha Esperada)
+#
+# Tentar criar um usuário SEM o token.
+#
+# ESPERADO: Status 401 UNAUTHORIZED.
+# (Isso prova que a rota não é mais pública)
+###
+# @name createUserSemToken
+POST http://localhost:8080/api/v1/users
+Content-Type: application/json
+
+{
+  "name": "Usuario Falho",
+  "email": "falho@email.com",
+  "senha": "123456",
+  "role": "ROLE_USER"
+}
