@@ -83,7 +83,7 @@ public class UserController {
             // 2. Atualizar os dados
             user.setName(userDtoPut.name());
             user.setEmail(userDtoPut.email());
-            user.setPerfis(List.of(perfil)); // Atualizar o perfil
+            user.setPerfis(new java.util.ArrayList<>(List.of(perfil))); // Atualizar o perfil
             // (Note: Não atualizamos a senha aqui. Isso é feito em outro endpoint)
 
             repository.save(user);

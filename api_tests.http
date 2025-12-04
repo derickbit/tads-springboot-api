@@ -34,7 +34,7 @@ Content-Type: application/json
 ###
 # @name getUsersComToken
 GET http://localhost:8080/api/v1/users
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJBUEkgQ2FyZE5lc3QiLCJzdWIiOiJhZG1pbkBlbWFpbC5jb20iLCJpYXQiOjE3NjMzNDE1NzEsImV4cCI6MTc2MzM0ODc3MX0.-_0YTxVK-vVKIYM6OSMS5sMo8liILarOQxaWsTRMVMo
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJBUEkgQ2FyZE5lc3QiLCJzdWIiOiJhZG1pbkBlbWFpbC5jb20iLCJpYXQiOjE3NjQ4NTg3NjksImV4cCI6MTc2NDg2NTk2OX0.Bz6jpv_3rf-Nl5UVXBVDTEqr1DYhWQF0que0IFrurls
 
 
 ### =======================================
@@ -48,7 +48,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJBUEkgQ2FyZ
 ###
 # @name createUserComToken
 POST http://localhost:8080/api/v1/users
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJBUEkgQ2FyZE5lc3QiLCJzdWIiOiJhZG1pbkBlbWFpbC5jb20iLCJpYXQiOjE3NjMzNDE1NzEsImV4cCI6MTc2MzM0ODc3MX0.-_0YTxVK-vVKIYM6OSMS5sMo8liILarOQxaWsTRMVMo
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJBUEkgQ2FyZE5lc3QiLCJzdWIiOiJhZG1pbkBlbWFpbC5jb20iLCJpYXQiOjE3NjQ4NTg3NjksImV4cCI6MTc2NDg2NTk2OX0.Bz6jpv_3rf-Nl5UVXBVDTEqr1DYhWQF0que0IFrurls
 Content-Type: application/json
 
 {
@@ -59,21 +59,14 @@ Content-Type: application/json
 }
 
 
-### =======================================
-### PASSO 4: Teste de Segurança (Falha Esperada)
-#
-# Tentar criar um usuário SEM o token.
-#
-# ESPERADO: Status 401 UNAUTHORIZED.
-# (Isso prova que a rota não é mais pública)
 ###
-# @name createUserSemToken
-POST http://localhost:8080/api/v1/users
+# @name updateUserComToken
+PUT http://localhost:8080/api/v1/users/2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJBUEkgQ2FyZE5lc3QiLCJzdWIiOiJhZG1pbkBlbWFpbC5jb20iLCJpYXQiOjE3NjQ4NTg3NjksImV4cCI6MTc2NDg2NTk2OX0.Bz6jpv_3rf-Nl5UVXBVDTEqr1DYhWQF0que0IFrurls
 Content-Type: application/json
 
 {
-  "name": "Usuario Falho",
-  "email": "falho@email.com",
-  "senha": "123456",
-  "role": "ROLE_USER"
+  "name": "Usuario Atualizado (Editado)",
+  "email": "atualizado.user@email.com",
+  "role": "ROLE_ADMIN"
 }

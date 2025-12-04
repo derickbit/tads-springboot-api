@@ -44,7 +44,7 @@ public class User implements UserDetails { // Implementa UserDetails
     private String email;
 
     // RENOMEADO (de password_hash para senha)
-    @Column(name = "senha", nullable = false)
+    @Column(name = "password_hash", nullable = false)
     private String senha;
 
     @Column(name = "avatar_url")
