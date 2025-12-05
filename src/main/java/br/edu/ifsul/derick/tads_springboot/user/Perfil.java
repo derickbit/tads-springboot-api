@@ -1,5 +1,6 @@
 package br.edu.ifsul.derick.tads_springboot.user;
 
+import com.fasterxml.jackson.annotation.JsonIgnore; // <--- Import novo e essencial
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,9 +20,10 @@ public class Perfil implements GrantedAuthority {
 
     private String nome;
 
-    // "perfis" é o nome do campo (List<Perfil>) que vamos criar
-    // na sua classe "User" no próximo passo.
+    // "perfis" é o nome do campo na classe User.
+    // O @JsonIgnore diz: "Quando transformar Perfil em texto, NÃO mostre a lista de usuários".
     @ManyToMany(mappedBy = "perfis")
+    @JsonIgnore
     private List<User> usuarios;
 
     @Override

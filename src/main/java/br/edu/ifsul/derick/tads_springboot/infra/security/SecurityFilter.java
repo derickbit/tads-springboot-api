@@ -37,6 +37,10 @@ public class SecurityFilter extends OncePerRequestFilter {
 
             // 4. Busca o usuário no banco de dados pelo email
             var usuario = repository.findByEmail(subject);
+            if (usuario != null) {
+                var authentication = new UsernamePasswordAuthenticationToken(usuario, null, usuario.getAuthorities());
+                SecurityContextHolder.getContext().setAuthentication(authentication);
+            }
 
             // 5. "Força" a autenticação do usuário no Spring Security
             var authentication = new UsernamePasswordAuthenticationToken(usuario, null, usuario.getAuthorities());

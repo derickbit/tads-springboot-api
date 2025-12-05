@@ -1,11 +1,16 @@
 package br.edu.ifsul.derick.tads_springboot.user;
 
+import br.edu.ifsul.derick.tads_springboot.user.User;
+import br.edu.ifsul.derick.tads_springboot.user.UserRepository;
+import br.edu.ifsul.derick.tads_springboot.infra.security.TokenService;
+
 // Importações de outras entidades do seu projeto
 import br.edu.ifsul.derick.tads_springboot.forumComment.ForumComment;
 import br.edu.ifsul.derick.tads_springboot.forumTopic.ForumTopic;
 import br.edu.ifsul.derick.tads_springboot.partida.Partida;
 import br.edu.ifsul.derick.tads_springboot.patchNote.PatchNote;
 import br.edu.ifsul.derick.tads_springboot.report.Report;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import java.util.stream.Collectors;
@@ -94,6 +99,7 @@ public class User implements UserDetails { // Implementa UserDetails
 
 
     @Override
+    @JsonIgnore
     public Collection<? extends GrantedAuthority> getAuthorities() {
         // Converte a List<Perfil> em uma List<SimpleGrantedAuthority>
         // O Spring Security entende isso perfeitamente.

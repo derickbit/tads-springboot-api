@@ -34,8 +34,7 @@ Content-Type: application/json
 ###
 # @name getUsersComToken
 GET http://localhost:8080/api/v1/users
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJBUEkgQ2FyZE5lc3QiLCJzdWIiOiJhZG1pbkBlbWFpbC5jb20iLCJpYXQiOjE3NjQ4NTg3NjksImV4cCI6MTc2NDg2NTk2OX0.Bz6jpv_3rf-Nl5UVXBVDTEqr1DYhWQF0que0IFrurls
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJBUEkgQ2FyZE5lc3QiLCJzdWIiOiJhZG1pbkBlbWFpbC5jb20iLCJpYXQiOjE3NjQ5Njk1MDksImV4cCI6MTc2NDk3NjcwOX0.TEDhNDESzyfIAzJ8GyvA2_n43AXilb2e22JLGRWAOiI
 
 ### =======================================
 ### PASSO 3: Testar Rota de ADMIN (POST)
@@ -48,12 +47,12 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJBUEkgQ2FyZ
 ###
 # @name createUserComToken
 POST http://localhost:8080/api/v1/users
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJBUEkgQ2FyZE5lc3QiLCJzdWIiOiJhZG1pbkBlbWFpbC5jb20iLCJpYXQiOjE3NjQ4NTg3NjksImV4cCI6MTc2NDg2NTk2OX0.Bz6jpv_3rf-Nl5UVXBVDTEqr1DYhWQF0que0IFrurls
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJBUEkgQ2FyZE5lc3QiLCJzdWIiOiJhZG1pbkBlbWFpbC5jb20iLCJpYXQiOjE3NjQ5Njk1MDksImV4cCI6MTc2NDk3NjcwOX0.TEDhNDESzyfIAzJ8GyvA2_n43AXilb2e22JLGRWAOiI
 Content-Type: application/json
 
 {
-  "name": "Novo Usuario (Criado pelo Admin)",
-  "email": "novo.user@email.com",
+  "name": "Novo Usuario 2 (Criado pelo Admin)",
+  "email": "novo.user2@email.com",
   "senha": "123456",
   "role": "ROLE_USER"
 }
@@ -61,12 +60,17 @@ Content-Type: application/json
 
 ###
 # @name updateUserComToken
-PUT http://localhost:8080/api/v1/users/2
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJBUEkgQ2FyZE5lc3QiLCJzdWIiOiJhZG1pbkBlbWFpbC5jb20iLCJpYXQiOjE3NjQ4NTg3NjksImV4cCI6MTc2NDg2NTk2OX0.Bz6jpv_3rf-Nl5UVXBVDTEqr1DYhWQF0que0IFrurls
+PUT http://localhost:8080/api/v1/users/3
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJBUEkgQ2FyZE5lc3QiLCJzdWIiOiJhZG1pbkBlbWFpbC5jb20iLCJpYXQiOjE3NjQ5Njk1MDksImV4cCI6MTc2NDk3NjcwOX0.TEDhNDESzyfIAzJ8GyvA2_n43AXilb2e22JLGRWAOiI
 Content-Type: application/json
 
 {
-  "name": "Usuario Atualizado (Editado)",
-  "email": "atualizado.user@email.com",
+  "name": "Usuario 3 Atualizado (Editado)",
+  "email": "atualizado.userssd2@email.com",
   "role": "ROLE_ADMIN"
 }
+
+###
+# @name deleteUserComToken
+DELETE http://localhost:8080/api/v1/users/4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJBUEkgQ2FyZE5lc3QiLCJzdWIiOiJhZG1pbkBlbWFpbC5jb20iLCJpYXQiOjE3NjQ5Njk1MDksImV4cCI6MTc2NDk3NjcwOX0.TEDhNDESzyfIAzJ8GyvA2_n43AXilb2e22JLGRWAOiI
