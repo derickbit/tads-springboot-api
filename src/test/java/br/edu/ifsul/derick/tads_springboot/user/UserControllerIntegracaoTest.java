@@ -67,10 +67,18 @@ class UserControllerIntegracaoTest extends BaseAPIIntegracaoTest {
 
     @Test
     void findById_DeveriaRetornarUsuarioCorreto() {
-        var response = get("/api/v1/users/20", User.class);
+        var response = get("/api/v1/users/20", UserDtoResponse.class);
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertNotNull(response.getBody());
-        assertEquals("User Teste", response.getBody().getName());
+        assertEquals("User Teste", response.getBody().name());
+    }
+
+    @Test
+    void findById_NaoDeveExporHashDaSenha() {
+        var response = get("/api/v1/users/20", String.class);
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertFalse(response.getBody().contains("$2a$"), "A resposta nao pode conter o hash da senha");
+        assertFalse(response.getBody().toLowerCase().contains("password"));
     }
 
     @Test

@@ -32,12 +32,11 @@ public class UserController {
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<User> findById(@PathVariable Long id){
-        var optionalUser = repository.findById(id);
-        if(optionalUser.isPresent()){
-            return ResponseEntity.ok(optionalUser.get());
-        }
-        return ResponseEntity.notFound().build();
+    public ResponseEntity<UserDtoResponse> findById(@PathVariable Long id){
+        // Devolve o DTO: a entidade User carrega o hash da senha e nunca deve ir na resposta
+        return repository.findById(id)
+                .map(user -> ResponseEntity.ok(new UserDtoResponse(user)))
+                .orElse(ResponseEntity.notFound().build());
     }
 
     // MÉTODO INSERT ATUALIZADO
@@ -67,7 +66,8 @@ public class UserController {
         return ResponseEntity.created(location).build();
     }
 
-    // MÉTODO UPDATE ATUALIZADO
+    // MÉTODO UPDATE ATUALIZADO (somente administrador: altera perfil de acesso)
+    @Secured("ROLE_ADMIN")
     @PutMapping("{id}")
     public ResponseEntity<UserDtoResponse> update(@PathVariable("id") Long id, @Valid @RequestBody UserDtoPut userDtoPut){
         var optionalUser = repository.findById(id);
@@ -93,6 +93,7 @@ public class UserController {
         return ResponseEntity.notFound().build();
     }
 
+    @Secured("ROLE_ADMIN")
     @DeleteMapping("{id}")
     public ResponseEntity<Void> delete(@PathVariable("id") Long id){
         if(repository.existsById(id)){
