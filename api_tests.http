@@ -8,7 +8,7 @@
 # Rode este teste (clique no ▶️ verde).
 # Ele deve retornar um Status 200 OK.
 #
-# Na resposta (no painel "Run"), você verá um JSON: {"token": "ey..."}
+# A resposta traz um JSON: {"token": "ey..."}. Os passos seguintes usam esse token
 #
 # !! IMPORTANTE: Copie APENAS a string longa que começa com "ey...",
 #    SEM as aspas e SEM as chaves {}.
@@ -26,15 +26,14 @@ Content-Type: application/json
 ### =======================================
 ### PASSO 2: Testar Acesso a Rota Protegida (GET)
 #
-# 1. Copie o token do PASSO 1.
-# 2. Cole o token DEPOIS da palavra "Bearer " na linha "Authorization:".
-# 3. Rode este teste.
+# O token do PASSO 1 e reaproveitado automaticamente
+# ({{loginAdmin.response.body.token}}). Rode o PASSO 1 antes.
 #
 # ESPERADO: Status 200 OK e a lista com seu usuário Admin.
 ###
 # @name getUsersComToken
 GET http://localhost:8080/api/v1/users
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJBUEkgQ2FyZE5lc3QiLCJzdWIiOiJhZG1pbkBlbWFpbC5jb20iLCJpYXQiOjE3NjQ5Njk1MDksImV4cCI6MTc2NDk3NjcwOX0.TEDhNDESzyfIAzJ8GyvA2_n43AXilb2e22JLGRWAOiI
+Authorization: Bearer {{loginAdmin.response.body.token}}
 
 ### =======================================
 ### PASSO 3: Testar Rota de ADMIN (POST)
@@ -47,7 +46,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJBUEkgQ2FyZ
 ###
 # @name createUserComToken
 POST http://localhost:8080/api/v1/users
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJBUEkgQ2FyZE5lc3QiLCJzdWIiOiJhZG1pbkBlbWFpbC5jb20iLCJpYXQiOjE3NjQ5Njk1MDksImV4cCI6MTc2NDk3NjcwOX0.TEDhNDESzyfIAzJ8GyvA2_n43AXilb2e22JLGRWAOiI
+Authorization: Bearer {{loginAdmin.response.body.token}}
 Content-Type: application/json
 
 {
@@ -61,7 +60,7 @@ Content-Type: application/json
 ###
 # @name updateUserComToken
 PUT http://localhost:8080/api/v1/users/3
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJBUEkgQ2FyZE5lc3QiLCJzdWIiOiJhZG1pbkBlbWFpbC5jb20iLCJpYXQiOjE3NjQ5Njk1MDksImV4cCI6MTc2NDk3NjcwOX0.TEDhNDESzyfIAzJ8GyvA2_n43AXilb2e22JLGRWAOiI
+Authorization: Bearer {{loginAdmin.response.body.token}}
 Content-Type: application/json
 
 {
@@ -73,4 +72,4 @@ Content-Type: application/json
 ###
 # @name deleteUserComToken
 DELETE http://localhost:8080/api/v1/users/4
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJBUEkgQ2FyZE5lc3QiLCJzdWIiOiJhZG1pbkBlbWFpbC5jb20iLCJpYXQiOjE3NjQ5Njk1MDksImV4cCI6MTc2NDk3NjcwOX0.TEDhNDESzyfIAzJ8GyvA2_n43AXilb2e22JLGRWAOiI
+Authorization: Bearer {{loginAdmin.response.body.token}}

@@ -49,6 +49,7 @@ public class User implements UserDetails { // Implementa UserDetails
     private String email;
 
     // RENOMEADO (de password_hash para senha)
+    @JsonIgnore
     @Column(name = "password_hash", nullable = false)
     private String senha;
 
@@ -108,6 +109,7 @@ public class User implements UserDetails { // Implementa UserDetails
                 .collect(Collectors.toList());
     }
     @Override
+    @JsonIgnore
     public String getPassword() {
         return this.senha; // Retorna a senha
     }
